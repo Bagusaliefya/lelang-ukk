@@ -49,4 +49,9 @@ class User extends Authenticatable
     /**
      * Get the level that owns the user.
      */
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }

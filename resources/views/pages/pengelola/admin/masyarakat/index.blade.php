@@ -18,13 +18,13 @@
                                 <form action="{{ route('admin.tambahMasyarakat') }}" method="post">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="id_user">ID User:</label>
-                                        <input type="text" class="form-control" id="id_user" name="id_user"
+                                        <label for="id">ID User:</label>
+                                        <input type="text" class="form-control" id="id" name="id"
                                             placeholder="Enter ID User">
                                     </div>
                                     <div class="form-group">
-                                        <label for="nama_lengkap">Nama Lengkap:</label>
-                                        <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
+                                        <label for="name">Nama Lengkap:</label>
+                                        <input type="text" class="form-control" id="name" name="name"
                                             placeholder="Enter Nama Lengkap">
                                     </div>
                                     <div class="form-group">
@@ -38,9 +38,16 @@
                                             placeholder="Enter Password">
                                     </div>
                                     <div class="form-group">
-                                        <label for="telp">Telepon:</label>
-                                        <input type="text" class="form-control" id="telp" name="telp"
-                                            placeholder="Enter Telepon">
+                                        <label for="role">Role:</label>
+                                        <select class="form-control" id="role" name="role">
+                                            {{-- Assuming you have a $roles variable passed from the controller --}}
+                                            @foreach ($roles as $role)
+                                                @if ($role->id == 3)
+                                                    <option value="{{ $role->id }}" selected>{{ $role->name }}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <button type="button" class="btn btn-secondary me-2"
                                         data-dismiss="modal">Cancel</button>
@@ -93,7 +100,8 @@
                                             Password</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Telepon</th>
+                                            Role</th>
+
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Action</th>
@@ -104,21 +112,21 @@
                                     @foreach ($dataMasyarakat as $masyarakat)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $masyarakat->id_user }}</td>
-                                            <td>{{ $masyarakat->nama_lengkap }}</td>
+                                            <td>{{ $masyarakat->id }}</td>
+                                            <td>{{ $masyarakat->name }}</td>
                                             <td>{{ $masyarakat->email }}</td>
                                             <td>{{ $masyarakat->password }}</td>
-                                            <td>{{ $masyarakat->telp }}</td>
+                                            <td>{{ $masyarakat->role_id }}</td>
                                             <td>
                                                 <!-- Tambahkan tombol edit dan hapus sesuai kebutuhan -->
                                                 <!-- Example for edit button -->
                                                 <a class="btn btn-sm btn-warning" data-toggle="modal"
-                                                    href="{{ route('admin.editMasyarakat', $masyarakat->id_user) }}">
+                                                    href="{{ route('admin.editMasyarakat', $masyarakat->id) }}">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
 
                                                 <!-- Example for delete button -->
-                                                <a href="{{ route('admin.hapusMasyarakat', $masyarakat->id_user) }}"
+                                                <a href="{{ route('admin.hapusMasyarakat', $masyarakat->id) }}"
                                                     class="btn btn-sm btn-danger"
                                                     onclick="return confirm('Are you sure you want to delete this item?')">
                                                     <i class="fas fa-trash"></i> Delete

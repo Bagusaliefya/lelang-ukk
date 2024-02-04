@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
-use App\Models\Masyarakat;
+use App\Models\User;
+use App\Models\Role;
 use Illuminate\Support\Facades\Storage;
 
 class Admin extends Controller
 {
     public function form()
     {
-        $dataMasyarakat = Masyarakat::all();
+        $dataMasyarakat = User::all();
         $dataBarang = Barang::all();
         return view('pages.pengelola.admin.dashboard.index', ['dataBarang' => $dataBarang, 'dataMasyarakat' => $dataMasyarakat]);
     }
@@ -99,15 +100,16 @@ class Admin extends Controller
 
     public function formmasyarakat()
     {
-        $dataMasyarakat = Masyarakat::all();
-        return view('pages.pengelola.admin.masyarakat.index', ['dataMasyarakat' => $dataMasyarakat]);
+        $dataMasyarakat = User::all();
+        $roles = Role::all();
+        return view('pages.pengelola.admin.masyarakat.index', ['dataMasyarakat' => $dataMasyarakat], ['roles' => $roles]);
     }
 
     public function TambahMasyarakat(Request $request)
     {
         $dataMasyarakat = $request->all();
 
-        Masyarakat::create($dataMasyarakat);
+        User::create($dataMasyarakat);
 
         return redirect()->route('admin-masyarakat');
     }
@@ -115,7 +117,7 @@ class Admin extends Controller
     public function HapusMasyarakat($id)
     {
         try {
-            $item = Masyarakat::findOrFail($id);
+            $item = User::findOrFail($id);
             $item->delete();
 
             return redirect()->route('admin-masyarakat')->with('success', 'Data berhasil dihapus!');
@@ -126,14 +128,14 @@ class Admin extends Controller
 
     public function formEditMasyarakat($id)
     {
-        $dataMasyarakat = Masyarakat::all()->find($id);
+        $dataMasyarakat = User::all()->find($id);
         return view('pages.pengelola.admin.masyarakat.edit', ['dataMasyarakat' => $dataMasyarakat]);
     }
 
     public function UpdateMasyarakat(Request $request, $id)
     {
         // Temukan data masyarakat berdasarkan ID
-        $dataMasyarakat = Masyarakat::find($id);
+        $dataMasyarakat = User::find($id);
 
         // Perbarui data masyarakat dengan nilai dari formulir
         $dataMasyarakat->update($request->all());
