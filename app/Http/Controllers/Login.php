@@ -26,10 +26,12 @@ class Login extends Controller
 
             // Check the user's role_id and redirect accordingly
             $user = auth()->user();
-            if ($user->role_id === 1) { // assuming 1 is the role_id for admin
+            if ($user->role_id === 1) {
                 return redirect()->intended('/Admin');
-            } elseif ($user->role_id === 2) { // assuming 2 is the role_id for petugas
+            } elseif ($user->role_id === 2) {
                 return redirect()->intended('/Petugas');
+            } elseif ($user->role_id === 3) {
+                return redirect()->intended('/Masyarakat');
             }
         }
 

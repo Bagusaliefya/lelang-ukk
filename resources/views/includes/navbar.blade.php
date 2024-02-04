@@ -1,12 +1,24 @@
  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+
      <!-- Navbar -->
      <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
          navbar-scroll="true">
+
+         @if (Auth::user()->role_id === 3)
+             <div class="d-flex justify-content-end">
+                 <p class="mr-3"><a href="/Masyarakat" class="link-underline-primary">Lelang</a></p>
+                 <p class="mr-3"><a href="/lelang" class="link-underline-primary">History</a></p>
+             </div>
+         @endif
+
+
          <div class="container-fluid py-1 px-3">
              <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                      <div class="input-group">
-                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                         <span class="input-group-text text-body"><i class="fas fa-search"
+                                 aria-hidden="true"></i></span>
                          <input type="text" class="form-control" placeholder="Type here...">
                      </div>
                  </div>
@@ -36,6 +48,7 @@
                              data-bs-toggle="dropdown" aria-expanded="false">
                              <i class="fa fa-bell cursor-pointer"></i>
                          </a>
+
                          <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                              aria-labelledby="dropdownMenuButton">
                              <li class="mb-2">

@@ -52,4 +52,3 @@ Route::post('/Petugas/tambah-lelang', [Petugas::class, 'TambahLelang'])->name('p
 
 //Form Masyarakat
 Route::get('/Masyarakat', [Masyarakat::class, 'form'])->name('masyarakat');
-Route::get('/Login/Masyarakat', [Masyarakat::class, 'formLogin'])->name('masyarakat.login');

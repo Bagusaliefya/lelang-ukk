@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lelang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Masyarakat extends Controller
 {
     public function form()
     {
-
-        return view('masyarakat.index');
-    }
-    public function formLogin()
-    {
-
-        return view('pages.auth.masyarakat.login');
+        $dataLelang = Lelang::all();
+        return view('pages.pengelola.masyarakat.lelang.index', ['dataLelang' => $dataLelang]);
     }
 }

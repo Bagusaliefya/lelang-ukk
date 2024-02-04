@@ -18,13 +18,12 @@ return new class extends Migration
             $table->bigInteger('harga_awal');
             $table->bigInteger('harga_akhir');
             $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id');
             $table->enum('status', ['dibuka', 'ditutup']);
 
             // Foreign key constraints
             $table->foreign('id_barang')->references('id_barang')->on('barang');
-            $table->foreign('id_user')->references('id_user')->on('masyarakat');
-            $table->foreign('id')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users');
+
 
             $table->timestamps();
         });

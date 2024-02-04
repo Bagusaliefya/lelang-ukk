@@ -21,7 +21,7 @@ return new class extends Migration
             // Foreign key constraints
             $table->foreign('id_lelang')->references('id_lelang')->on('lelang');
             $table->foreign('id_barang')->references('id_barang')->on('barang');
-            $table->foreign('id_user')->references('id_user')->on('masyarakat');
+            $table->foreign('id_user')->references('id')->on('users');
 
             $table->timestamps();
         });
