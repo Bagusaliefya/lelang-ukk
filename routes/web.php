@@ -48,7 +48,7 @@ Route::get('/Petugas', [Petugas::class, 'form'])->name('petugas');
 Route::get('/Petugas/Barang', [Petugas::class, 'formbarang'])->name('petugas-barang');
 Route::get('/Petugas/Lelang', [Petugas::class, 'formlelang'])->name('petugas-lelang');
 Route::post('/Petugas/tambah-lelang', [Petugas::class, 'TambahLelang'])->name('petugas.tambahLelang');
-
+Route::get('/Petugas/hapusLelang/{id}', [Petugas::class, 'HapusLelang'])->name('petugas.hapusLelang');
 
 //Form Masyarakat
 Route::get('/Masyarakat', [Masyarakat::class, 'form'])->name('masyarakat');

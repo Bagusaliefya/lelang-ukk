@@ -12,12 +12,20 @@
                 @foreach ($dataLelang as $lelang)
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="{{ $lelang->gambar }}" class="card-img-top" alt="{{ $lelang->judul }}">
+                            <img src="{{ $lelang->barang->image }}" class="card-img-top" alt="{{ $lelang->judul }}">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $lelang->judul }}</h5>
+                                <h5 class="card-title">{{ $lelang->barang->nama_barang }}</h5>
                                 <p class="card-text">{{ $lelang->deskripsi }}</p>
-                                <p class="card-text">Harga Awal: {{ $lelang->harga_awal }}</p>
-                                <a href="{{ route('lelang.show', $lelang->id) }}" class="btn btn-primary">Detail</a>
+                                <p class="card-text">Harga: {{ $lelang->harga_awal }}</p>
+
+                                <!-- Tombol Bid -->
+                                <form action="" method="post">
+                                    @csrf
+
+                                    <button type="submit" class="btn btn-primary">Bid</button>
+                                </form>
+                                <!-- Akhir Tombol Bid -->
+
                             </div>
                         </div>
                     </div>

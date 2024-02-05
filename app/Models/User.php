@@ -19,10 +19,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
         'role_id',
+
     ];
 
 
@@ -53,5 +55,10 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function lelang()
+    {
+        return $this->hasMany(Lelang::class, 'id_user', 'id');
     }
 }

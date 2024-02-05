@@ -27,22 +27,17 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">,
                         <div class="table-responsive p-0">
-                            <form action="/Admin/updateMasyarakat/{{ $dataMasyarakat->id_user }}" method="post"
+                            <form action="/Admin/updateMasyarakat/{{ $dataMasyarakat->id }}" method="post"
                                 class="row px-4 py-5">
                                 @csrf
                                 @method('PUT')
-                                <input type="hidden" name="id" value="{{ $dataMasyarakat->id_user }}">
+                                <input type="hidden" name="id" value="{{ $dataMasyarakat->id }}">
 
-                                <div class="form-group mb-4 col-md-6">
-                                    <label for="id_user">ID User:</label>
-                                    <input type="text" class="form-control" id="id_user" name="id_user"
-                                        value="{{ $dataMasyarakat->id_user }}" placeholder="Enter ID Barang">
-                                </div>
 
                                 <div class="form-group mb-4 col-md-6">
                                     <label for="nama_lengkap">Nama Lengkap:</label>
                                     <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
-                                        value="{{ $dataMasyarakat->nama_lengkap }}" placeholder="Enter Nama Barang">
+                                        value="{{ $dataMasyarakat->name }}" placeholder="ENTER">
                                 </div>
 
                                 <div class="form-group mb-4 col-md-6">
@@ -54,12 +49,7 @@
                                 <div class="form-group mb-4 col-md-6">
                                     <label for="password">Password:</label>
                                     <input type="text" class="form-control" id="password" name="password"
-                                        value="{{ $dataMasyarakat->password }}" placeholder="Enter harga">
-                                </div>
-
-                                <div class="form-group mb-4 col-md-6">
-                                    <label for="telp">telepon:</label>
-                                    <textarea class="form-control" id="telp" name="telp" placeholder="Enter Deskripsi">{{ $dataMasyarakat->telp }}</textarea>
+                                        value="{{ $dataMasyarakat->password }}" placeholder="ENTER">
                                 </div>
 
                                 <div class="d-flex justify-content-center flex-column">

@@ -24,19 +24,39 @@ class Petugas extends Controller
 
     public function formlelang()
     {
-        $dataLelang = Barang::all();
+        $dataLelang = Lelang::with(['barang', 'user'])->get();
+        $dataBarang = Barang::all();
         // dd($dataLelang);
 
 
-        return view('pages.pengelola.petugas.lelang.index', ['dataLelang' => $dataLelang]);
+        return view('pages.pengelola.petugas.lelang.index', ['dataLelang' => $dataLelang, 'dataBarang' => $dataBarang],);
     }
 
     public function TambahLelang(Request $request)
     {
-        $dataLelang = $request->all();
+        $hargaAwal = Barang::find($request->id_barang)->harga_awal;
 
-        Lelang::create($dataLelang);
+        Lelang::create([
+            'id_lelang' => $request->id_lelang,
+            'id_barang' => $request->id_barang,
+            'tanggal_lelang' => $request->tanggal_lelang,
+            'harga_awal' => $hargaAwal,
+            'harga_akhir' => 0,
+            'status' => 'dibuka',
+
+        ]);
 
         return redirect()->route('petugas-lelang');
+    }
+    public function HapusLelang($id)
+    {
+        try {
+            $item = Lelang::findOrFail($id);
+            $item->delete();
+
+            return redirect()->route('petugas-lelang')->with('success', 'Data berhasil dihapus!');
+        } catch (\Exception $e) {
+            return redirect()->route('petugas-lelang')->with('error', 'Gagal menghapus data. Silakan coba lagi.');
+        }
     }
 }

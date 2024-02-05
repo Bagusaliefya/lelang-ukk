@@ -109,6 +109,9 @@ class Admin extends Controller
     {
         $dataMasyarakat = $request->all();
 
+        // Menambahkan role_id ke data sebelum disimpan
+        $dataMasyarakat['role_id'] = 3;
+
         User::create($dataMasyarakat);
 
         return redirect()->route('admin-masyarakat');

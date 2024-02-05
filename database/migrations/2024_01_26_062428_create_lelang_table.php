@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('tanggal_lelang');
             $table->bigInteger('harga_awal');
             $table->bigInteger('harga_akhir');
-            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_user')->nullable();
             $table->enum('status', ['dibuka', 'ditutup']);
 
             // Foreign key constraints

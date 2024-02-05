@@ -43,12 +43,13 @@
                                             {{-- Assuming you have a $roles variable passed from the controller --}}
                                             @foreach ($roles as $role)
                                                 @if ($role->id == 3)
-                                                    <option value="{{ $role->id }}" selected>{{ $role->name }}
+                                                    <option value="{{ $role->id }}" selected>{{ $role->id }}
                                                     </option>
                                                 @endif
                                             @endforeach
                                         </select>
                                     </div>
+
                                     <button type="button" class="btn btn-secondary me-2"
                                         data-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-success">Submit</button>
