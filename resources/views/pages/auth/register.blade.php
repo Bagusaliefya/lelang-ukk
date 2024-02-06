@@ -19,9 +19,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/supermarket.png">
     <title>
-        Soft UI Dashboard by Creative Tim
+        REGISTER
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -48,7 +48,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-5 text-center mx-auto">
                             <h1 class="text-white mb-2 mt-5">SELAMAT DATANG!</h1>
-                            <p class="text-lead text-white">Silahkan idi data kalian disini ya!</p>
+                            <p class="text-lead text-white">Silahkan isi data kalian disini ya!</p>
                         </div>
                     </div>
                 </div>
