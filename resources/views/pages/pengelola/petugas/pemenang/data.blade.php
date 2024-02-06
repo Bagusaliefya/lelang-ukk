@@ -71,30 +71,34 @@
                         </div>
                     @endif
 
-                    @if ($dataPemenang->count() > 0)
-                        <div class="row">
-                            @foreach ($dataPemenang as $data)
-                                <div class="col-md-4 mb-4">
-                                    <div class="card lelang-card"> <!-- Tambahkan kelas lelang-card -->
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $data->barang->nama_barang }}</h5>
-                                            <p class="card-text">{{ $data->barang->deskripsi_barang }}</p>
-                                            <p class="card-text">Harga: {{ $data->barang->harga_awal }}</p>
-
+                    <form action="" method="post">
+                        @csrf
+                        @if ($dataUser->count() > 0)
+                            <div class="row">
+                                @foreach ($dataUser as $data)
+                                    @if ($data->lelang->status == 'dibuka')
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card lelang-card">
+                                                <!-- Tambahkan kelas lelang-card -->
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{ $data->barang->nama_barang }}</h5>
+                                                    <p class="card-text">{{ $data->barang->deskripsi_barang }}</p>
+                                                    <p class="card-text">Harga: {{ $data->barang->harga_awal }}</p>
+                                                    <p class="card-text">Harga Penawaran: {{ $data->penawaran_harga }}</p>
+                                                    <p class="card-text">Pelelang: {{ $data->user->name }}</p>
+                                                    <a href="{{ route('lelang.update', $data->id_lelang) }}"
+                                                        class="btn btn-primary">Konfirmasi
+                                                        Pemenang</a href="">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <p>LIHAT USER LELANG DISINI YA</p>
-                        <a href="{{ route('petugas-user') }}" class="btn-sm">Lihat
-                            User</a>
-                    @else
-                        <p>Tidak ada data lelang.</p>
-                    @endif
-                </div>
-                <div class="col-md-4"> <!-- Sidebar area -->
-                    @include('includes.sidebar')
+                                    @endif
+                                @endforeach
+                            </div>
+                        @else
+                            <p>Tidak ada data lelang.</p>
+                        @endif
+                    </form>
                 </div>
             </div>
         </div>

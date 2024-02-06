@@ -100,7 +100,7 @@ class Admin extends Controller
 
     public function formmasyarakat()
     {
-        $dataMasyarakat = User::all();
+        $dataMasyarakat = User::where('role_id', 3)->get();
         $roles = Role::all();
         return view('pages.pengelola.admin.masyarakat.index', ['dataMasyarakat' => $dataMasyarakat], ['roles' => $roles]);
     }

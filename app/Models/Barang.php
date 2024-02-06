@@ -16,4 +16,9 @@ class Barang extends Model
     {
         return $this->hasMany(Lelang::class, 'id_barang', 'id_barang');
     }
+
+    public function history()
+    {
+        return $this->hasMany(History::class, 'id_barang ');
+    }
 }

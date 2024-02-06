@@ -16,7 +16,7 @@ class Lelang extends Model
         'harga_awal',
         'harga_akhir',
         'id_user',
-        'id_status',
+        'status',
     ];
 
     protected $primaryKey = 'id_lelang';
@@ -29,5 +29,10 @@ class Lelang extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user', 'id');
+    }
+
+    public function history()
+    {
+        return $this->hasMany(History::class, 'id_lelang', 'id_lelang');
     }
 }

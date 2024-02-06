@@ -25,7 +25,7 @@ Route::get('/logout', [Login::class, 'logout'])->name('logout');
 
 //Form Register
 Route::get('/Register', [Register::class, 'form'])->name('register');
-
+Route::post('/Register', [Register::class, 'tambahPetugas'])->name('register.tambah');
 
 //Form Admin
 Route::get('/Admin', [Admin::class, 'form'])->name('admin');
@@ -49,6 +49,10 @@ Route::get('/Petugas/Barang', [Petugas::class, 'formbarang'])->name('petugas-bar
 Route::get('/Petugas/Lelang', [Petugas::class, 'formlelang'])->name('petugas-lelang');
 Route::post('/Petugas/tambah-lelang', [Petugas::class, 'TambahLelang'])->name('petugas.tambahLelang');
 Route::get('/Petugas/hapusLelang/{id}', [Petugas::class, 'HapusLelang'])->name('petugas.hapusLelang');
+Route::get('/Petugas/Pemenang', [Petugas::class, 'formPemenang'])->name('petugas-pemenang');
+Route::get('/Petugas/User/', [Petugas::class, 'formData'])->name('petugas-user');
+Route::get('/Petugas/Update/{id}', [Petugas::class, 'UpdateLelang'])->name('lelang.update');
 
 //Form Masyarakat
 Route::get('/Masyarakat', [Masyarakat::class, 'form'])->name('masyarakat');
+Route::post('/Masyarakt/bid', [Masyarakat::class, 'bid'])->name('masyarakat.bid');

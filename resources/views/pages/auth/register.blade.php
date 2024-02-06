@@ -59,33 +59,33 @@
                     <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                         <div class="card z-index-0">
                             <div class="card-body">
-                                <form role="form text-left" method="POST" action="{{ route('register') }}">
+                                <form role="form text-left" method="POST" action="{{ route('register.tambah') }}">
                                     @csrf
 
                                     <div class="mb-3">
                                         <input type="text" class="form-control" placeholder="Name" aria-label="Name"
-                                            name="name">
+                                            name="name" id="name">
                                     </div>
                                     <div class="mb-3">
                                         <input type="email" class="form-control" placeholder="Email"
-                                            aria-label="Email" name="email">
+                                            aria-label="Email" name="email" id="name">
                                     </div>
                                     <div class="mb-3">
                                         <input type="password" class="form-control" placeholder="Password"
-                                            aria-label="Password" name="password">
+                                            aria-label="Password" name="password" id="password">
                                     </div>
                                     <div class="mb-3">
                                         <label for="role">Role:</label>
-                                        <select class="form-control" id="role" name="role">
-                                            <option value="admin">Admin</option>
-                                            <option value="petugas">Petugas</option>
+                                        <select class="form-control" id="role_id" name="role_id">
+                                            <option value="1">Admin</option>
+                                            <option value="2">Petugas</option>
                                         </select>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign
+                                        <button class="btn bg-gradient-dark w-100 my-4 mb-2">Sign
                                             up</button>
                                     </div>
-                                    <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{ route('login') }}"
+                                    <p class="text-sm mt-3 mb-0">Sudah Punya Akun? <a href="{{ route('login') }}"
                                             class="text-dark font-weight-bolder">Sign in</a></p>
                                 </form>
 

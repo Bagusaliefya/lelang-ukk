@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Lelang::class, 'id_user', 'id');
     }
+
+    public function history()
+    {
+        return $this->hasMany(History::class, 'id_user');
+    }
 }
