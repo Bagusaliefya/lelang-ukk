@@ -15,29 +15,47 @@
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                     No</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    Id Barang</th>
+                    Id Lelang</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                     Nama Barang</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                     Tanggal</th>
+
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    Harga</th>
+                    Harga Awal</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    Deskripsi</th>
+                    Harga Akhir</th>
+
+
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    Pemenang</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    Status</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    Action</th>
                 <th class="text-secondary opacity-7"></th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($dataBarang as $barang)
+            @foreach ($dataLelang as $lelang)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $barang->id_barang }}</td>
-                    <td>{{ $barang->nama_barang }}</td>
-                    <td>{{ $barang->tanggal }}</td>
-                    <td>{{ $barang->harga_awal }}</td>
-                    <td>{{ $barang->deskripsi_barang }}</td>
+                    <td>{{ $lelang->id_lelang }}</td>
+                    <td>
+                        {{ $lelang->barang->nama_barang }}
+                    </td>
 
-                    <!-- New column to display the image -->
+                    <td>{{ $lelang->tanggal_lelang }}</td>
+                    <td>
+                        {{ $lelang->barang->harga_awal }}
+                    </td>
+
+                    <td>{{ $lelang->harga_akhir }}</td>
+                    <td>
+                        {{ $lelang->user->name ?? 'belum ada pemenang' }}
+                    </td>
+
+                    <td>{{ $lelang->status }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -7,6 +7,7 @@ use App\Models\Barang;
 use App\Models\History;
 use App\Models\Lelang;
 use PhpParser\Node\Stmt\Return_;
+use Barryvdh\DomPDF\Facade\Pdf;
 use SebastianBergmann\CodeUnit\FunctionUnit;
 
 class Petugas extends Controller
@@ -98,5 +99,13 @@ class Petugas extends Controller
         } catch (\Exception $e) {
             return redirect()->route('petugas-lelang')->with('error', 'Gagal menghapus data. Silakan coba lagi.');
         }
+    }
+
+
+    public function exportPdf()
+    {
+        $dataLelang = Lelang::all();
+        $pdf = Pdf::loadView('pages.pengelola.petugas.laporan.laporan', ['dataLelang' => $dataLelang]);
+        return $pdf->download('export-lelang-.pdf');
     }
 }

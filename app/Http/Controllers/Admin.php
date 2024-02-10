@@ -6,6 +6,8 @@ use App\Models\Barang;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class Admin extends Controller
@@ -83,6 +85,13 @@ class Admin extends Controller
 
         // Redirect ke halaman admin-barang
         return redirect()->route('admin-barang');
+    }
+
+    public function exportPdf()
+    {
+        $dataBarang = Barang::all();
+        $pdf = Pdf::loadView('pages.pengelola.admin.laporan.laporan', ['dataBarang' => $dataBarang]);
+        return $pdf->download('export-barang-.pdf');
     }
 
 

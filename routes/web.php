@@ -34,6 +34,7 @@ Route::get('/Admin/hapusData/{id}', [Admin::class, 'HapusData'])->name('admin.ha
 Route::get('/Admin/editData/{id}', [Admin::class, 'formEdit'])->name('admin.editData');
 Route::put('/Admin/updateData/{id}', [Admin::class, 'Update'])->name('admin.prosesEdit');
 Route::post('/Admin/tambah-barang', [Admin::class, 'TambahData'])->name('admin.tambahData');
+Route::get('/export-pdf', [Admin::class, 'exportPdf']);
 
 // Form Admin SIDEBAR MASYARAKAT
 Route::get('/Admin/Masyarakat', [Admin::class, 'formMasyarakat'])->name('admin-masyarakat');
@@ -52,6 +53,7 @@ Route::get('/Petugas/hapusLelang/{id}', [Petugas::class, 'HapusLelang'])->name('
 Route::get('/Petugas/Pemenang', [Petugas::class, 'formPemenang'])->name('petugas-pemenang');
 Route::get('/Petugas/User/', [Petugas::class, 'formData'])->name('petugas-user');
 Route::get('/Petugas/Update/{id}', [Petugas::class, 'UpdateLelang'])->name('lelang.update');
+Route::get('/export-lelang-pdf', [Petugas::class, 'exportPdf']);
 
 //Form Masyarakat
 Route::get('/Masyarakat', [Masyarakat::class, 'form'])->name('masyarakat');

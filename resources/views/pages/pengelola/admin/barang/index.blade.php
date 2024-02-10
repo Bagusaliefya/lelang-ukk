@@ -22,6 +22,7 @@
 
 
 
+
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
         <div class="row">
@@ -152,10 +153,11 @@
 
                                                 <!-- Tambahkan tombol hapus -->
                                                 <a href="{{ route('admin.hapusData', $barang->id_barang) }}"
-                                                    class="btn btn-sm btn-danger"
-                                                    onclick="return confirm('Are you sure you want to delete this item?')">
+                                                    class="btn btn-sm btn-danger" onclick="return confirm('Mau Hapus?')">
                                                     <i class="fas fa-trash"></i> Delete
                                                 </a>
+
+
                                             </td>
                                         </tr>
                                     @endforeach
