@@ -54,8 +54,9 @@
                                     <div class="numbers">
                                         <p class="text-sm mb-0 text-capitalize font-weight-bold">Data Lelang</p>
                                         <h5 class="font-weight-bolder mb-0">
-
+                                            {{ count($dataLelang) }}
                                         </h5>
+
                                     </div>
                                 </div>
                                 <div class="col-4 text-end">

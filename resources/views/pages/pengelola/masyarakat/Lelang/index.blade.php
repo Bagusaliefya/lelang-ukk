@@ -69,6 +69,11 @@
             </div>
         @endif
 
+        @if (Session::has('notification'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('notification') }}
+            </div>
+        @endif
 
         @if ($dataLelang->count() > 0)
             <div class="row">

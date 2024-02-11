@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\History;
 use App\Models\Lelang;
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
 use PhpParser\Node\Stmt\Return_;
 use Barryvdh\DomPDF\Facade\Pdf;
 use SebastianBergmann\CodeUnit\FunctionUnit;
@@ -15,7 +17,8 @@ class Petugas extends Controller
     public function form()
     {
         $dataBarang = Barang::all();
-        return view('pages.pengelola.petugas.dashboard.index', ['dataBarang' => $dataBarang]);
+        $dataLelang = Lelang::all();
+        return view('pages.pengelola.petugas.dashboard.index', ['dataBarang' => $dataBarang, 'dataLelang' => $dataLelang]);
     }
 
     //Function Sidebar Barang
@@ -57,8 +60,8 @@ class Petugas extends Controller
         $lelang = Lelang::findOrFail($id);
         $penawaranTertinggi = History::where('id_lelang', $lelang->id_lelang)->max('penawaran_harga');
         $idUser = History::where([['id_lelang', $lelang->id_lelang], ['penawaran_harga', $penawaranTertinggi]])->first();
-        // Perbarui harga_akhir, pemenang, dan status pada data lelang
 
+        // Perbarui harga_akhir, pemenang, dan status pada data lelang
         $lelang->update([
             'harga_akhir' => $penawaranTertinggi,
             'id_user' => $idUser->id_user,

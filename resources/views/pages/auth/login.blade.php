@@ -37,6 +37,18 @@
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
+<style>
+    .oblique-image {
+        background-size: cover;
+        /* atau contain, tergantung preferensi Anda */
+        background-position: center;
+        /* mengatur posisi gambar agar selalu terlihat tengah */
+        width: 100%;
+        /* memastikan gambar mengisi lebar kontainer */
+        height: 100%;
+        /* memastikan gambar mengisi tinggi kontainer */
+    }
+</style>
 
 <body class="">
     <div class="container position-sticky z-index-sticky top-0">
@@ -97,7 +109,7 @@
                         <div class="col-md-6">
                             <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
                                 <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-                                    style="background-image:url('../assets/img/curved-images/bg-login.jpg')"></div>
+                                    style="background-image:url('../assets/img/login_lelang.jpg')"></div>
                             </div>
                         </div>
                     </div>
