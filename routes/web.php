@@ -51,7 +51,7 @@ Route::get('/Petugas/Lelang', [Petugas::class, 'formlelang'])->name('petugas-lel
 Route::post('/Petugas/tambah-lelang', [Petugas::class, 'TambahLelang'])->name('petugas.tambahLelang');
 Route::get('/Petugas/hapusLelang/{id}', [Petugas::class, 'HapusLelang'])->name('petugas.hapusLelang');
 Route::get('/Petugas/Pemenang', [Petugas::class, 'formPemenang'])->name('petugas-pemenang');
-Route::get('/Petugas/User/', [Petugas::class, 'formData'])->name('petugas-user');
+Route::get('/Petugas/User', [Petugas::class, 'formData'])->name('petugas-user');
 Route::get('/Petugas/Update/{id}', [Petugas::class, 'UpdateLelang'])->name('lelang.update');
 Route::get('/export-lelang-pdf', [Petugas::class, 'exportPdf']);
 

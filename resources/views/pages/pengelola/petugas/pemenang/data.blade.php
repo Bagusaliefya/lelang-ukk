@@ -70,35 +70,62 @@
                             {{ session('error') }}
                         </div>
                     @endif
-
-                    <form action="" method="post">
+                    <form action="{{ route('petugas-user') }}" method="get">
                         @csrf
-                        @if ($dataUser->count() > 0)
-                            <div class="row">
-                                @foreach ($dataUser as $data)
-                                    @if ($data->lelang->status == 'dibuka')
-                                        <div class="col-md-4 mb-4">
-                                            <div class="card lelang-card">
-                                                <!-- Tambahkan kelas lelang-card -->
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{{ $data->barang->nama_barang }}</h5>
-                                                    <p class="card-text">{{ $data->barang->deskripsi_barang }}</p>
-                                                    <p class="card-text">Harga: {{ $data->barang->harga_awal }}</p>
-                                                    <p class="card-text">Harga Penawaran: {{ $data->penawaran_harga }}</p>
-                                                    <p class="card-text">Pelelang: {{ $data->user->name }}</p>
-                                                    <a href="{{ route('lelang.update', $data->id_lelang) }}"
-                                                        class="btn btn-primary">Konfirmasi
-                                                        Pemenang</a href="">
-                                                </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <select class="form-select" name="sort_by" onchange="this.form.submit()">
+                                    <option value="all" @if ($sort_by == 'all') selected @endif>Semua</option>
+                                    <option value="high" @if ($sort_by == 'high') selected @endif>Penawaran
+                                        Tertinggi</option>
+                                    <option value="low" @if ($sort_by == 'low') selected @endif>Penawaran
+                                        Terendah</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" name="barang" onchange="this.form.submit()">
+                                    <option value="">Pilih Barang</option>
+                                    @foreach ($dataLelang as $lelang)
+                                        <option value="{{ $lelang->barang->id_barang }}"
+                                            @if ($barang == $lelang->barang->id_barang) selected @endif>
+                                            {{ $lelang->barang->nama_barang }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </form>
+
+
+
+                    @if ($dataUser->count() > 0)
+                        <div class="row">
+                            @foreach ($dataUser as $data)
+                                @if ($data->lelang->status == 'dibuka')
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card lelang-card">
+                                            <!-- Tambahkan kelas lelang-card -->
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $data->barang->nama_barang }}</h5>
+                                                <p class="card-text">{{ $data->barang->deskripsi_barang }}</p>
+                                                <p class="card-text">Harga: {{ $data->barang->harga_awal }}</p>
+                                                <p class="card-text">Harga Penawaran: {{ $data->penawaran_harga }}</p>
+                                                <p class="card-text">Pelelang: {{ $data->user->name }}</p>
+                                                <a href="{{ route('lelang.update', $data->id_lelang) }}"
+                                                    class="btn btn-primary">Konfirmasi
+                                                    Pemenang</a href="">
                                             </div>
                                         </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                        @else
-                            <p>Tidak ada data lelang.</p>
-                        @endif
-                    </form>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    @else
+                        <p>Tidak ada data lelang.</p>
+                    @endif
+
                 </div>
             </div>
         </div>

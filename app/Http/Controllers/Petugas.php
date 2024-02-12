@@ -45,13 +45,43 @@ class Petugas extends Controller
         return view('pages.pengelola.petugas.pemenang.index', ['dataPemenang' => $dataPemenangLelang]);
     }
 
-    public function formData()
+    public function formData(Request $request)
     {
-        $dataUser = History::with(['lelang', 'barang', 'user'])->get();
-        $dataLelang = Lelang::with(['history'])->get();
-        // dd($dataUser);
-        return view('pages.pengelola.petugas.pemenang.data', ['dataUser' => $dataUser, 'dataLelang' => $dataLelang]);
+        $sort_by = $request->input('sort_by', 'all');
+        $barang = $request->input('barang');
+
+        $dataUser = History::with(['lelang', 'barang', 'user'])
+            ->whereHas('lelang', function ($query) {
+                $query->where('status', 'dibuka');
+            })
+            ->when($sort_by == 'high', function ($query) {
+                $query->orderBy('penawaran_harga', 'desc');
+            })
+            ->when($sort_by == 'low', function ($query) {
+                $query->orderBy('penawaran_harga', 'asc');
+            })
+            ->where('id_barang', $request->barang)
+            ->get();
+
+        // Ambil satu data saja untuk setiap id_barang
+        if ($sort_by != 'all') {
+            $dataUser = $dataUser->groupBy('lelang_id')->map(function ($group) {
+                return $group->first();
+            });
+        }
+
+        $dataLelang = Lelang::with(['history'])->where('status', 'dibuka')->get();
+
+        return view('pages.pengelola.petugas.pemenang.data', [
+            'dataUser' => $dataUser,
+            'dataLelang' => $dataLelang,
+            'sort_by' => $sort_by,
+            'barang' => $barang,  // Mengirimkan variabel barang ke tampilan
+        ]);
     }
+
+
+
 
 
     public function UpdateLelang(Request $request, $id)
