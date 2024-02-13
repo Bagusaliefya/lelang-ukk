@@ -14,7 +14,7 @@ class Admin extends Controller
 {
     public function form()
     {
-        $dataMasyarakat = User::all();
+        $dataMasyarakat = User::where('role_id', 3)->get();
         $dataBarang = Barang::all();
         return view('pages.pengelola.admin.dashboard.index', ['dataBarang' => $dataBarang, 'dataMasyarakat' => $dataMasyarakat]);
     }
@@ -50,7 +50,7 @@ class Admin extends Controller
         $request['image'] = $newName;
         $dataBarang = Barang::create($request->all());
 
-        return redirect()->route('admin-barang');
+        return redirect()->route('admin-barang')->with('success', 'Data berhasil ditambahkan!');
     }
 
 
@@ -84,7 +84,7 @@ class Admin extends Controller
         }
 
         // Redirect ke halaman admin-barang
-        return redirect()->route('admin-barang');
+        return redirect()->route('admin-barang')->with('success', 'Data berhasil diubah!');
     }
 
     public function exportPdf()
@@ -123,7 +123,7 @@ class Admin extends Controller
 
         User::create($dataMasyarakat);
 
-        return redirect()->route('admin-masyarakat');
+        return redirect()->route('admin-masyarakat')->with('success', 'Data berhasil Ditambahkan!');
     }
 
     public function HapusMasyarakat($id)
@@ -153,6 +153,6 @@ class Admin extends Controller
         $dataMasyarakat->update($request->all());
 
         // Redirect ke halaman admin-masyarakat atau sesuai kebutuhan
-        return redirect()->route('admin-masyarakat');
+        return redirect()->route('admin-masyarakat')->with('success', 'Data berhasil diubah!');
     }
 }

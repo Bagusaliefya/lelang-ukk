@@ -11,17 +11,14 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0" style="text-align: center">
                         <h3>Tambah Masyarakat</h3>
+
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center justify-content-center mb-0">
                                 <form action="{{ route('admin.tambahMasyarakat') }}" method="post">
                                     @csrf
-                                    <div class="form-group">
-                                        <label for="id">ID User:</label>
-                                        <input type="text" class="form-control" id="id" name="id"
-                                            placeholder="Enter ID User">
-                                    </div>
+
                                     <div class="form-group">
                                         <label for="name">Nama Lengkap:</label>
                                         <input type="text" class="form-control" id="name" name="name"

@@ -63,6 +63,12 @@
     <div class="container mt-4">
 
         <h2>Daftar Lelang</h2>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         @if (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
@@ -74,6 +80,7 @@
                 {{ Session::get('notification') }}
             </div>
         @endif
+
 
         @if ($dataLelang->count() > 0)
             <div class="row">

@@ -35,8 +35,8 @@
 
 
                                 <div class="form-group mb-4 col-md-6">
-                                    <label for="nama_lengkap">Nama Lengkap:</label>
-                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
+                                    <label for="name">Nama Lengkap:</label>
+                                    <input type="text" class="form-control" id="name" name="name"
                                         value="{{ $dataMasyarakat->name }}" placeholder="ENTER">
                                 </div>
 

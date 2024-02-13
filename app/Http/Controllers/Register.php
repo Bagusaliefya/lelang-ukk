@@ -18,6 +18,6 @@ class Register extends Controller
 
         User::create($dataPetugas);
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Data Berhasil Didaftarkan');
     }
 }

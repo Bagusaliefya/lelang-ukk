@@ -40,7 +40,7 @@ class Petugas extends Controller
 
     public function formPemenang()
     {
-        $dataPemenangLelang = Lelang::with(['history', 'barang'])->get();
+        $dataPemenangLelang = Lelang::with(['history', 'barang'])->where('status', 'dibuka')->get();
 
         return view('pages.pengelola.petugas.pemenang.index', ['dataPemenang' => $dataPemenangLelang]);
     }
@@ -100,7 +100,7 @@ class Petugas extends Controller
 
 
         // Redirect ke halaman petugas lelang atau sesuai kebutuhan
-        return redirect()->route('petugas-lelang');
+        return redirect()->route('petugas-lelang')->with('success', 'Pemenang Sudah Di Masukkan!');
     }
 
 
@@ -120,7 +120,7 @@ class Petugas extends Controller
 
         ]);
 
-        return redirect()->route('petugas-lelang');
+        return redirect()->route('petugas-lelang')->with('success', 'Data berhasil DItambahkan!');
     }
     public function HapusLelang($id)
     {

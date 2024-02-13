@@ -35,7 +35,7 @@ class Login extends Controller
             }
         }
 
-        return redirect()->route('login')->with('error', 'Invalid login credentials.');
+        return redirect()->route('login')->with('error', 'Mohon Cek Email Dan Password Nya Kembali Ya!');
     }
 
 

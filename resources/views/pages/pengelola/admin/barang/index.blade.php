@@ -59,10 +59,7 @@
                                         <label for="deskripsi_barang">Deskripsi:</label>
                                         <textarea class="form-control" id="deskripsi_barang" name="deskripsi_barang" placeholder="Enter Deskripsi"></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="gambar">Image:</label>
-                                        <input type="file" class="form-control" id="gambar" name="gambar">
-                                    </div>
+
                                     <button type="button" class="btn btn-secondary me-2"
                                         data-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-success">Submit</button>
@@ -115,9 +112,7 @@
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Deskripsi</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Image</th>
+
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Action</th>
@@ -135,14 +130,7 @@
                                             <td>{{ $barang->deskripsi_barang }}</td>
 
                                             <!-- New column to display the image -->
-                                            <td>
-                                                @if ($barang->image)
-                                                    <img src="{{ asset('storage/' . $barang->image) }}" alt="Image"
-                                                        class="img-thumbnail" style="max-width: 50px;">
-                                                @else
-                                                    No Image
-                                                @endif
-                                            </td>
+
 
                                             <td>
                                                 <!-- Tambahkan tombol edit -->
@@ -197,10 +185,8 @@
                     <div class="badge-colors my-2 text-start">
                         <span class="badge filter bg-gradient-primary active" data-color="primary"
                             onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-dark" data-color="dark"
-                            onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-info" data-color="info"
-                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
                         <span class="badge filter bg-gradient-success" data-color="success"
                             onclick="sidebarColor(this)"></span>
                         <span class="badge filter bg-gradient-warning" data-color="warning"

@@ -28,6 +28,6 @@ class Masyarakat extends Controller
 
         // Jika bid valid, buat riwayat baru
         $history = History::create($request->all());
-        return redirect()->route('masyarakat');
+        return redirect()->route('masyarakat')->with('success', 'makasih sudah mau bid!');
     }
 }

@@ -62,10 +62,6 @@
                                     <textarea class="form-control" id="deskripsi_barang" name="deskripsi_barang" placeholder="Enter Deskripsi">{{ $dataBarang->deskripsi_barang }}</textarea>
                                 </div>
 
-                                <div class="form-group mb-4 col-md-6">
-                                    <label for="image">Gambar:</label>
-                                    <input type="file" class="form-control" id="image" name="image">
-                                </div>
 
 
                                 <div class="d-flex justify-content-center flex-column">

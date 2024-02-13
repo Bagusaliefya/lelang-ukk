@@ -65,7 +65,17 @@
                                 <div class="card-header pb-0 text-left bg-transparent">
                                     <h3 class="font-weight-bolder text-info text-gradient">SELAMAT DATANG</h3>
                                     <p class="mb-0">MASUKKAN EMAIL DAN PASSWORD KALIAN DI SINI YA! 😊</p>
+                                    @if (session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
 
+                                    @if (session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
 
                                 </div>
                                 <div class="card-body">
